@@ -1,0 +1,729 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #080a0d;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+
+/* =========================================
+   Sidebar Scrollbar
+========================================= */
+
+.sidebar-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+.sidebar-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-scroll::-webkit-scrollbar-button {
+  display: none;
+}
+
+
+/* =========================================
+   Note List Scrollbar
+========================================= */
+
+.note-list-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+.note-list-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.note-list-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.note-list-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+}
+
+.note-list-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.note-list-scroll::-webkit-scrollbar-button {
+  display: none;
+}
+
+
+/* =========================================
+   Tiptap Editor Scrollbar
+========================================= */
+
+.editor-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.08) transparent;
+}
+
+.editor-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.editor-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.editor-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+}
+
+.editor-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.editor-scroll::-webkit-scrollbar-button {
+  display: none;
+}
+
+
+/* =========================================
+   Tiptap Editor
+========================================= */
+
+.tiptap {
+  min-height: 100%;
+  color: #d1d5db;
+  outline: none;
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   Headings
+========================================= */
+
+.tiptap h1 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.tiptap h2 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.tiptap h3 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   Paragraphs
+========================================= */
+
+.tiptap p {
+  margin: 0.6rem 0;
+}
+
+
+/* =========================================
+   Bullet List
+========================================= */
+
+.tiptap ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+
+/* =========================================
+   Ordered List
+========================================= */
+
+.tiptap ol {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+  list-style-type: decimal;
+}
+
+
+/* =========================================
+   List Items
+========================================= */
+
+.tiptap li {
+  margin: 0.25rem 0;
+}
+
+
+/* =========================================
+   Bold
+========================================= */
+
+.tiptap strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   Links
+========================================= */
+
+.tiptap a {
+  color: #a855f7;
+  text-decoration: underline;
+}
+
+
+/* =========================================
+   Inline Code
+========================================= */
+
+.tiptap code {
+  border-radius: 4px;
+  background: #1a1d23;
+  padding: 2px 5px;
+  color: #c084fc;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+
+/* =========================================
+   Code Block
+========================================= */
+
+.tiptap pre {
+  margin: 1rem 0;
+  overflow-x: auto;
+  border-radius: 8px;
+  background: #090b0e;
+  padding: 1rem;
+}
+
+.tiptap pre code {
+  background: transparent;
+  padding: 0;
+  color: #d1d5db;
+}
+
+
+/* =========================================
+   Images
+========================================= */
+
+.tiptap img {
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0;
+  border-radius: 8px;
+}
+
+
+/* =========================================
+   Tiptap Checklist
+========================================= */
+
+.tiptap ul[data-type="taskList"] {
+  list-style: none;
+  margin: 0.5rem 0;
+  padding: 0;
+}
+
+
+/* Each checklist item */
+
+.tiptap ul[data-type="taskList"] > li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0.35rem 0;
+  padding: 0;
+}
+
+
+/* Checkbox wrapper */
+
+.tiptap ul[data-type="taskList"] > li > label {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+
+  width: 18px;
+  height: 24px;
+
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Actual checkbox */
+
+.tiptap
+  ul[data-type="taskList"]
+  > li
+  > label
+  > input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+
+  margin: 0;
+
+  cursor: pointer;
+
+  accent-color: #9333ea;
+}
+
+
+/* Text container */
+
+.tiptap ul[data-type="taskList"] > li > div {
+  flex: 1;
+  min-width: 0;
+}
+
+
+/* Paragraph inside checklist */
+
+.tiptap
+  ul[data-type="taskList"]
+  > li
+  > div
+  > p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   Checked Checklist Item
+========================================= */
+
+.tiptap
+  ul[data-type="taskList"]
+  li[data-checked="true"]
+  > div {
+  color: #6b7280;
+  text-decoration: line-through;
+}
+
+
+/* =========================================
+   Nested Checklist
+========================================= */
+
+.tiptap
+  ul[data-type="taskList"]
+  ul[data-type="taskList"] {
+  margin-top: 0.35rem;
+  margin-left: 1.5rem;
+}
+
+
+/* =========================================
+   Selection
+========================================= */
+
+.tiptap ::selection {
+  background: rgba(168, 85, 247, 0.3);
+}
+
+
+/* =========================================
+   Placeholder
+========================================= */
+
+.tiptap p.is-editor-empty:first-child::before {
+  color: #4b5563;
+  content: "Start writing your note...";
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+
+/* =========================================
+   Horizontal Rule
+========================================= */
+
+.tiptap hr {
+  margin: 1.5rem 0;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================================
+   Blockquote
+========================================= */
+
+.tiptap blockquote {
+  margin: 1rem 0;
+  border-left: 3px solid #9333ea;
+  padding-left: 1rem;
+  color: #9ca3af;
+}
+
+
+/* =========================================
+   Tiptap Focus
+========================================= */
+
+.tiptap:focus {
+  outline: none;
+}
+
+
+
+/* =========================================
+   Tiptap Code Blocks
+========================================= */
+
+.tiptap pre {
+  position: relative;
+
+  margin: 1rem 0;
+
+  overflow-x: auto;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+
+  background: #090b0f;
+
+  padding: 16px 18px;
+
+  font-family:
+    "JetBrains Mono",
+    "Fira Code",
+    "Cascadia Code",
+    Consolas,
+    monospace;
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+
+/* Code inside code block */
+
+.tiptap pre code {
+  display: block;
+
+  background: transparent;
+
+  padding: 0;
+
+  color: #d1d5db;
+
+  font-family: inherit;
+
+  font-size: inherit;
+}
+
+
+/* =========================================
+   Syntax Highlighting
+========================================= */
+
+.tiptap pre .hljs-comment,
+.tiptap pre .hljs-quote {
+  color: #6b7280;
+  font-style: italic;
+}
+
+.tiptap pre .hljs-keyword,
+.tiptap pre .hljs-selector-tag,
+.tiptap pre .hljs-subst {
+  color: #c084fc;
+}
+
+.tiptap pre .hljs-string,
+.tiptap pre .hljs-doctag,
+.tiptap pre .hljs-regexp {
+  color: #86efac;
+}
+
+.tiptap pre .hljs-number,
+.tiptap pre .hljs-literal {
+  color: #fbbf24;
+}
+
+.tiptap pre .hljs-variable,
+.tiptap pre .hljs-template-variable {
+  color: #60a5fa;
+}
+
+.tiptap pre .hljs-title,
+.tiptap pre .hljs-title.function_,
+.tiptap pre .hljs-title.class_ {
+  color: #93c5fd;
+}
+
+.tiptap pre .hljs-built_in,
+.tiptap pre .hljs-type {
+  color: #67e8f9;
+}
+
+.tiptap pre .hljs-attr,
+.tiptap pre .hljs-attribute {
+  color: #f9a8d4;
+}
+
+.tiptap pre .hljs-name,
+.tiptap pre .hljs-tag {
+  color: #f472b6;
+}
+
+.tiptap pre .hljs-meta {
+  color: #a78bfa;
+}
+
+
+/* =========================================
+   Code Block Scrollbar
+========================================= */
+
+.tiptap pre::-webkit-scrollbar {
+  height: 5px;
+}
+
+.tiptap pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tiptap pre::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+}
+
+.tiptap pre::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* =========================================
+   Tiptap Code Blocks
+========================================= */
+
+.ProseMirror pre {
+  margin: 1rem 0;
+  padding: 1rem 1.1rem;
+
+  overflow-x: auto;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+
+  background: #090b0f;
+
+  font-family:
+    "JetBrains Mono",
+    "Fira Code",
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 13px;
+  line-height: 1.7;
+
+  color: #d1d5db;
+}
+
+.ProseMirror pre code {
+  display: block;
+
+  background: transparent;
+
+  padding: 0;
+
+  font-family: inherit;
+  font-size: inherit;
+
+  color: inherit;
+}
+
+
+/* =========================================
+   Inline Code
+========================================= */
+
+.ProseMirror code:not(pre code) {
+  padding: 2px 5px;
+
+  border-radius: 4px;
+
+  background: rgba(139, 92, 246, 0.12);
+
+  color: #c084fc;
+
+  font-family:
+    "JetBrains Mono",
+    "Fira Code",
+    monospace;
+
+  font-size: 0.9em;
+}
+
+
+/* =========================================
+   Syntax Highlighting
+========================================= */
+
+
+/* Comments */
+.ProseMirror .hljs-comment,
+.ProseMirror .hljs-quote {
+  color: #6a9955;
+  font-style: italic;
+}
+
+/* Keywords: let, const, function, return */
+.ProseMirror .hljs-keyword,
+.ProseMirror .hljs-selector-tag,
+.ProseMirror .hljs-subst {
+  color: #c586c0;
+}
+
+/* JavaScript built-in objects: console */
+.ProseMirror .hljs-built_in {
+  color: #4ec9b0;
+}
+
+/* Variables */
+.ProseMirror .hljs-variable,
+.ProseMirror .hljs-template-variable {
+  color: #9cdcfe;
+}
+
+/* Strings */
+.ProseMirror .hljs-string,
+.ProseMirror .hljs-doctag,
+.ProseMirror .hljs-regexp {
+  color: #ce9178;
+}
+
+/* Numbers: 23, 100, etc */
+.ProseMirror .hljs-number,
+.ProseMirror .hljs-literal {
+  color: #b5cea8;
+}
+
+/* Functions: log(), functionName() */
+.ProseMirror .hljs-title,
+.ProseMirror .hljs-title.function_,
+.ProseMirror .hljs-function {
+  color: #dcdcaa;
+}
+
+/* Properties: .log, .name, .length */
+.ProseMirror .hljs-property {
+  color: #9cdcfe;
+}
+
+/* Classes and types */
+.ProseMirror .hljs-type,
+.ProseMirror .hljs-title.class_ {
+  color: #4ec9b0;
+}
+
+/* HTML tags */
+.ProseMirror .hljs-name,
+.ProseMirror .hljs-tag {
+  color: #569cd6;
+}
+
+/* HTML attributes */
+.ProseMirror .hljs-attr,
+.ProseMirror .hljs-attribute {
+  color: #9cdcfe;
+}
+
+/* Meta / decorators */
+.ProseMirror .hljs-meta {
+  color: #c586c0;
+}
+
+/* Symbols / operators */
+.ProseMirror .hljs-operator,
+.ProseMirror .hljs-punctuation {
+  color: #d4d4d4;
+}
+
+/* Parameters */
+.ProseMirror .hljs-params {
+  color: #9cdcfe;
+}
+
+/* Function calls */
+.ProseMirror .hljs-title.function {
+  color: #dcdcaa;
+}
+
+/* =========================================
+   Selected Image
+========================================= */
+
+/* Selected image */
+
+.ProseMirror-selectednode {
+  outline: none !important;
+}
+
+
+/* =========================================
+   Editor Images
+========================================= */
+
+.ProseMirror .editor-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  cursor: pointer;
+}
