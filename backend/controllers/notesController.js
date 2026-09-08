@@ -2,10 +2,6 @@ import bcrypt from "bcryptjs";
 import { supabase } from "../lib/supabase.js";
 
 
-/* ========================================================= */
-/* REMOVE SENSITIVE DATA */
-/* ========================================================= */
-
 const sanitizeNote = (note) => {
   if (!note) {
     return note;

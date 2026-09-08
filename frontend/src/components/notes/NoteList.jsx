@@ -109,10 +109,6 @@ const selectedViewName =
 
         {notes.length === 0 ? (
 
-          /* =============================================== */
-          /* No Notes Available */
-          /* =============================================== */
-
           <div className="flex h-full items-center justify-center px-6 text-center">
             <div>
               <p className="text-sm font-medium text-gray-400">

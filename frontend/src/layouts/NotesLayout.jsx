@@ -13,16 +13,8 @@ export default function NotesLayout({
   selectedView,
   onSelectView,
 }) {
-  /* ========================================================= */
-  /* CATEGORIES STATE */
-  /* ========================================================= */
 
-  const [categories, setCategories] = useState([]);
-
-
-  /* ========================================================= */
-/* LOAD CATEGORIES */
-/* ========================================================= */
+const [categories, setCategories] = useState([]);
 
 const loadCategories = useCallback(async () => {
   try {
@@ -165,17 +157,8 @@ useEffect(() => {
   };
 
 
-
-  /* ========================================================= */
-  /* RENDER */
-  /* ========================================================= */
-
   return (
     <div className="flex h-screen w-full overflow-hidden bg-[#080a0d] text-white">
-
-      {/* ================================================= */}
-      {/* Sidebar */}
-      {/* ================================================= */}
 
       <Sidebar
         selectedView={selectedView}

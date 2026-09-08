@@ -1,17 +1,11 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useAuth } from "@clerk/react";
 import { useState } from "react";
-
 import NotesLayout from "./layouts/NotesLayout";
 import Notes from "./pages/Notes";
-
 import SignInPage from "./pages/SignIn";
 import SignUpPage from "./pages/SignUp";
 
-
-/* ========================================================= */
-/* PROTECTED ROUTE */
-/* ========================================================= */
 
 function ProtectedRoute({ children }) {
   const { isLoaded, isSignedIn } = useAuth();

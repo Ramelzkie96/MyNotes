@@ -397,6 +397,30 @@ useEffect(() => {
   };
 }, []);
 
+/* ========================================================= */
+/* Flush Pending Save on Browser Close / Navigate Away */
+/* ========================================================= */
+
+useEffect(() => {
+  const flushPendingSave = () => {
+    if (saveTimeoutRef.current) {
+      clearTimeout(saveTimeoutRef.current);
+      saveTimeoutRef.current = null;
+    }
+    saveEditorContent();
+  };
+
+  // pagehide fires more reliably than beforeunload across
+  // browsers/mobile (tab close, refresh, navigation).
+  window.addEventListener("pagehide", flushPendingSave);
+  window.addEventListener("beforeunload", flushPendingSave);
+
+  return () => {
+    window.removeEventListener("pagehide", flushPendingSave);
+    window.removeEventListener("beforeunload", flushPendingSave);
+  };
+}, [note, selectedView]);
+
   /* ========================================================= */
   /* Load Selected Note Content */
   /* ========================================================= */
@@ -460,7 +484,11 @@ useEffect(() => {
   editor,
   note?.id,
   note?.is_locked,
-  note?.content,
+  // NOTE: note?.content intentionally NOT included here.
+  // Including it re-runs setContent() every time our own debounced
+  // save round-trips content back down from the parent, which
+  // clobbers whatever the user is currently typing (looked like a
+  // random "undo"/content revert bug while typing).
 ]);
 
 
@@ -796,17 +824,10 @@ if (
           >
 
             {/* Category Dot */}
-
             <span
-              className={`
-                h-2
-                w-2
-                shrink-0
-                rounded-full
-                ${selectedCategoryColors.color}
-              `}
+              className={`h-2 w-2 shrink-0 rounded-full 
+                ${selectedCategoryColors.color} `}
             />
-
 
             {/* Category Name */}
 
