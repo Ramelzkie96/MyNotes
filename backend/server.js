@@ -16,7 +16,10 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://mynotes-ramel.netlify.app",
+    ],
     credentials: true,
   })
 );
