@@ -1,4 +1,12 @@
-import {useCallback,useEffect,useState,cloneElement,} from "react";
+import {
+  useCallback,
+  useEffect,
+  useState,
+  cloneElement,
+} from "react";
+
+import { useAuth } from "@clerk/clerk-react";
+
 import Sidebar from "../components/layout/Sidebar";
 import Header from "../components/layout/Header";
 import { apiFetch } from "../config/api";
@@ -8,46 +16,53 @@ export default function NotesLayout({
   selectedView,
   onSelectView,
 }) {
+  const { getToken } = useAuth();
 
-const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([]);
 
-const loadCategories = useCallback(async () => {
-  try {
-    const response = await apiFetch(
-      "/api/categories"
-    );
+  /* ========================================================= */
+  /* LOAD CATEGORIES */
+  /* ========================================================= */
 
-    if (!response.ok) {
-      throw new Error(
-        "Failed to fetch categories"
+  const loadCategories = useCallback(async () => {
+    try {
+      const token = await getToken();
+
+      const response = await apiFetch(
+        "/api/categories",
+        {
+          method: "GET",
+        },
+        token
+      );
+
+      if (!response.ok) {
+        throw new Error(
+          "Failed to fetch categories"
+        );
+      }
+
+      const result = await response.json();
+
+      setCategories(
+        result.categories || []
+      );
+
+    } catch (error) {
+      console.error(
+        "Failed to load categories:",
+        error
       );
     }
+  }, [getToken]);
 
-    const result = await response.json();
+  /* ========================================================= */
+  /* INITIAL LOAD CATEGORIES */
+  /* ========================================================= */
 
-    setCategories(
-      result.categories || []
-    );
-
-  } catch (error) {
-    console.error(
-      "Failed to load categories:",
-      error
-    );
-  }
-}, []);
-
-
-/* ========================================================= */
-/* INITIAL LOAD CATEGORIES */
-/* ========================================================= */
-
-useEffect(() => {
-  loadCategories();
-}, [loadCategories]);
-
-
-
+  useEffect(() => {
+    loadCategories();
+  }, [loadCategories]);
 
   /* ========================================================= */
   /* CREATE CATEGORY */
@@ -58,6 +73,8 @@ useEffect(() => {
     color,
   }) => {
     try {
+      const token = await getToken();
+
       const response = await apiFetch(
         "/api/categories",
         {
@@ -67,7 +84,8 @@ useEffect(() => {
             name,
             color,
           }),
-        }
+        },
+        token
       );
 
       const result = await response.json();
@@ -109,11 +127,14 @@ useEffect(() => {
     categoryId
   ) => {
     try {
+      const token = await getToken();
+
       const response = await apiFetch(
         `/api/categories/${categoryId}`,
         {
           method: "DELETE",
-        }
+        },
+        token
       );
 
       const result = await response.json();
@@ -147,6 +168,9 @@ useEffect(() => {
     }
   };
 
+  /* ========================================================= */
+  /* UI */
+  /* ========================================================= */
 
   return (
     <div className="flex h-screen w-full overflow-hidden bg-[#080a0d] text-white">
@@ -178,7 +202,6 @@ useEffect(() => {
         }
       />
 
-
       {/* ================================================= */}
       {/* Main */}
       {/* ================================================= */}
@@ -187,16 +210,15 @@ useEffect(() => {
 
         <Header />
 
-       <main className="min-h-0 flex-1 overflow-auto">
-        {cloneElement(children, {
-          categories,
-          refreshCategoryCounts: loadCategories,
-        })}
-      </main>
+        <main className="min-h-0 flex-1 overflow-auto">
+          {cloneElement(children, {
+            categories,
+            refreshCategoryCounts: loadCategories,
+          })}
+        </main>
 
       </div>
 
     </div>
   );
 }
-
