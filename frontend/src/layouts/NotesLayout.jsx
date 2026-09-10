@@ -5,7 +5,7 @@ import {
   cloneElement,
 } from "react";
 
-import { useAuth } from "@clerk/clerk-react";
+import { useAuth } from "@clerk/react";
 
 import Sidebar from "../components/layout/Sidebar";
 import Header from "../components/layout/Header";
