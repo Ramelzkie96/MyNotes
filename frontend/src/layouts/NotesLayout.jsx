@@ -1,12 +1,7 @@
-import {
-  useCallback,
-  useEffect,
-  useState,
-  cloneElement,
-} from "react";
-
+import {useCallback,useEffect,useState,cloneElement,} from "react";
 import Sidebar from "../components/layout/Sidebar";
 import Header from "../components/layout/Header";
+import { apiFetch } from "../config/api";
 
 export default function NotesLayout({
   children,
@@ -18,7 +13,7 @@ const [categories, setCategories] = useState([]);
 
 const loadCategories = useCallback(async () => {
   try {
-    const response = await fetch(
+    const response = await apiFetch(
       "/api/categories"
     );
 
@@ -63,14 +58,10 @@ useEffect(() => {
     color,
   }) => {
     try {
-      const response = await fetch(
+      const response = await apiFetch(
         "/api/categories",
         {
           method: "POST",
-
-          headers: {
-            "Content-Type": "application/json",
-          },
 
           body: JSON.stringify({
             name,
@@ -118,7 +109,7 @@ useEffect(() => {
     categoryId
   ) => {
     try {
-      const response = await fetch(
+      const response = await apiFetch(
         `/api/categories/${categoryId}`,
         {
           method: "DELETE",

@@ -259,12 +259,6 @@ const categoryColor =
   categories,
 ]);
 
-
-
-  /* ========================================================= */
-  /* CREATE NEW NOTE */
-  /* ========================================================= */
-
   const createNewNote = useCallback(async () => {
     if (!isLoaded || !isSignedIn) {
       console.warn(
@@ -277,10 +271,6 @@ const categoryColor =
     try {
       setError(null);
 
-      /* --------------------------------------------------- */
-      /* Get Clerk authentication token */
-      /* --------------------------------------------------- */
-
       const token = await getToken();
 
       if (!token) {
@@ -289,19 +279,6 @@ const categoryColor =
         );
       }
 
-      /* --------------------------------------------------- */
-      /* Create empty note */
-      /*
-         We intentionally send:
-         
-         title: "Untitled Note"
-         content: null
-         
-         The backend will also apply these defaults,
-         but sending them explicitly makes the behavior
-         clear.
-      */
-      /* --------------------------------------------------- */
 
       const response = await apiFetch(
         "/api/notes",
